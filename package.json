@@ -1,0 +1,14 @@
+{
+  "name": "cosmos-zones-security-analayzer",
+  "version": "1.0.0",
+  "description": "Short script to quickly analyze the security thresholds of Cosmos zones ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Simon Brown<simon@simbro.me>",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2"
+  }
+}
