@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Non-Ribbon Chord diagram</title>
+  <link rel="stylesheet" href="./style.css">
+<style>
+  body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 500px;
+}
+  </style>
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/flow.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/themes/Responsive.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/themes/Micro.js"></script>
+<div id="chartdiv"></div>
+<!-- partial -->
+
+<script>
+  // Create root element
+// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+var root = am5.Root.new("chartdiv");
+
+
+// Set themes
+// https://www.amcharts.com/docs/v5/concepts/themes/
+root.setThemes([
+  am5themes_Responsive.new(root)
+]);
+
+
+// Create series
+// https://www.amcharts.com/docs/v5/charts/flow-charts/
+var series = root.container.children.push(am5flow.ChordNonRibbon.new(root, {
+  sourceIdField: "from",
+  targetIdField: "to",
+  linkType: "line",
+  radius: am5.percent(80)
+}));
+
+series.nodes.get("colors").set("step", 2);
+
+series.nodes.labels.template.setAll({
+  textType: "radial",
+  fill: root.interfaceColors.get("0x000000"),
+  fontSize: "0.7em",
+  radius: 32
+});
+
+// Set data
+// https://www.amcharts.com/docs/v5/charts/flow-charts/#Setting_data
+series.data.setAll([
+  { from: "Akashnet", to: "Cronos" },
+  { from: "Akashnet", to: "Crypto.org" },
+  { from: "Akashnet", to: "Emoney" },
+  { from: "Akashnet", to: "Impacthub" },
+  { from: "Akashnet", to: "Iov" },
+  { from: "Akashnet", to: "Irishub" },
+  { from: "Akashnet", to: "Juno" },
+  { from: "Akashnet", to: "Kava" },
+  { from: "Akashnet", to: "Microtick" },
+  { from: "Akashnet", to: "Omniflixhub" },
+  { from: "Akashnet", to: "Regen" },
+  { from: "Akashnet", to: "Secret" },
+  { from: "Akashnet", to: "Sentinelhub" },
+  { from: "Akashnet", to: "Sifchain" },
+  { from: "Akashnet", to: "Umee" },
+  { from: "Axelar", to: "Bitcanna" },
+  { from: "Axelar", to: "Columbus" },
+  { from: "Axelar", to: "Comdex" },
+  { from: "Axelar", to: "Crescent" },
+  { from: "Axelar", to: "Emoney" },
+  { from: "Axelar", to: "Evmos" },
+  { from: "Axelar", to: "Injective" },
+  { from: "Axelar", to: "Juno" },
+  { from: "Axelar", to: "Kaiyo" },
+  { from: "Axelar", to: "Kichain" },
+  { from: "Axelar", to: "Mantle" },
+  { from: "Axelar", to: "Secret" },
+  { from: "Axelar", to: "Stargaze" },
+  { from: "Bitcanna", to: "Gravity bridge" },
+  { from: "Bitcanna", to: "Juno" },
+  { from: "Bitcanna", to: "Omniflixhub" },
+  { from: "Bitcanna", to: "Sifchain" },
+  { from: "Bitcanna", to: "Stargaze" },
+  { from: "Bitsong", to: "Chihuahua" },
+  { from: "Bitsong", to: "Juno" },
+  { from: "Bitsong", to: "Kaiyo" },
+  { from: "Bitsong", to: "Sifchain" },
+  { from: "Bostrom", to: "Evmos" },
+  { from: "Bostrom", to: "Gravity bridge" },
+  { from: "Bostrom", to: "Juno" },
+  { from: "Cheqd", to: "Gravity bridge" },
+  { from: "Chihuahua", to: "Gravity bridge" },
+  { from: "Chihuahua", to: "Injective" },
+  { from: "Chihuahua", to: "Juno" },
+  { from: "Chihuahua", to: "Kaiyo" },
+  { from: "Chihuahua", to: "Omniflixhub" },
+  { from: "Chihuahua", to: "Secret" },
+  { from: "Chihuahua", to: "Sifchain" },
+  { from: "Chihuahua", to: "Titan" },
+  { from: "Columbus", to: "Crescent" },
+  { from: "Columbus", to: "Cronos" },
+  { from: "Columbus", to: "Darchub" },
+  { from: "Columbus", to: "Emoney" },
+  { from: "Columbus", to: "Evmos" },
+  { from: "Columbus", to: "Gravity bridge" },
+  { from: "Columbus", to: "Injective" },
+  { from: "Columbus", to: "Juno" },
+  { from: "Columbus", to: "Kava" },
+  { from: "Columbus", to: "Likecoin" },
+  { from: "Columbus", to: "Omniflixhub" },
+  { from: "Columbus", to: "Secret" },
+  { from: "Columbus", to: "Sifchain" },
+  { from: "Columbus", to: "Titan" },
+  { from: "Columbus", to: "Umee" },
+  { from: "Comdex", to: "Emoney" },
+  { from: "Comdex", to: "Gravity bridge" },
+  { from: "Comdex", to: "Irishub" },
+  { from: "Comdex", to: "Juno" },
+  { from: "Comdex", to: "Kaiyo" },
+  { from: "Comdex", to: "Sentinelhub" },
+  { from: "Comdex", to: "Sifchain" },
+  { from: "Comdex", to: "Stargaze" },
+  { from: "Crescent", to: "Evmos" },
+  { from: "Crescent", to: "Gravity bridge" },
+  { from: "Crescent", to: "Juno" },
+  { from: "Crescent", to: "Mantle" },
+  { from: "Crescent", to: "Umee" },
+  { from: "Cronos", to: "Crypto.org" },
+  { from: "Cronos", to: "Juno" },
+  { from: "Crypto.org", to: "Emoney" },
+  { from: "Crypto.org", to: "Impacthub" },
+  { from: "Crypto.org", to: "Iov" },
+  { from: "Crypto.org", to: "Irishub" },
+  { from: "Crypto.org", to: "Kaiyo" },
+  { from: "Crypto.org", to: "Microtick" },
+  { from: "Crypto.org", to: "Omniflixhub" },
+  { from: "Crypto.org", to: "Regen" },
+  { from: "Crypto.org", to: "Sentinelhub" },
+  { from: "Crypto.org", to: "Sifchain" },
+  { from: "Darchub", to: "Gravity bridge" },
+  { from: "Darchub", to: "Juno" },
+  { from: "Desmos", to: "Laozi" },
+  { from: "Desmos", to: "Stargaze" },
+  { from: "Desmos", to: "Umee" },
+  { from: "Dig", to: "Juno" },
+  { from: "Emoney", to: "Irishub" },
+  { from: "Emoney", to: "Juno" },
+  { from: "Emoney", to: "Kaiyo" },
+  { from: "Emoney", to: "Microtick" },
+  { from: "Emoney", to: "Regen" },
+  { from: "Emoney", to: "Sentinelhub" },
+  { from: "Emoney", to: "Sifchain" },
+  { from: "Evmos", to: "Gravity bridge" },
+  { from: "Evmos", to: "Injective" },
+  { from: "Evmos", to: "Juno" },
+  { from: "Evmos", to: "Kaiyo" },
+  { from: "Evmos", to: "Mantle" },
+  { from: "Evmos", to: "Secret" },
+  { from: "Evmos", to: "Sifchain" },
+  { from: "Evmos", to: "Stargaze" },
+  { from: "Evmos", to: "Umee" },
+  { from: "Fetchhub", to: "Gravity bridge" },
+  { from: "Fetchhub", to: "Juno" },
+  { from: "Fetchhub", to: "Sifchain" },
+  { from: "Fetchhub", to: "Umee" },
+  { from: "Gravity bridge", to: "Impacthub" },
+  { from: "Gravity bridge", to: "Irishub" },
+  { from: "Gravity bridge", to: "Juno" },
+  { from: "Gravity bridge", to: "Kaiyo" },
+  { from: "Gravity bridge", to: "Kichain" },
+  { from: "Gravity bridge", to: "Lum-network" },
+  { from: "Gravity bridge", to: "Mantle" },
+  { from: "Gravity bridge", to: "Omniflixhub" },
+  { from: "Gravity bridge", to: "Secret" },
+  { from: "Gravity bridge", to: "Sifchain" },
+  { from: "Gravity bridge", to: "Stargaze" },
+  { from: "Gravity bridge", to: "Titan" },
+  { from: "Gravity bridge", to: "Umee" },
+  { from: "Impacthub", to: "Iov" },
+  { from: "Impacthub", to: "Irishub" },
+  { from: "Impacthub", to: "Microtick" },
+  { from: "Impacthub", to: "Regen" },
+  { from: "Impacthub", to: "Sentinelhub" },
+  { from: "Impacthub", to: "Sifchain" },
+  { from: "Impacthub", to: "Stargaze" },
+  { from: "Injective", to: "Juno" },
+  { from: "Injective", to: "Laozi" },
+  { from: "Injective", to: "Secret" },
+  { from: "Iov", to: "Irishub" },
+  { from: "Iov", to: "Microtick" },
+  { from: "Iov", to: "Regen" },
+  { from: "Iov", to: "Sentinelhub" },
+  { from: "Iov", to: "Sifchain" },
+  { from: "Irishub", to: "Microtick" },
+  { from: "Irishub", to: "Regen" },
+  { from: "Irishub", to: "Sentinelhub" },
+  { from: "Irishub", to: "Sifchain" },
+  { from: "Juno", to: "Kaiyo" },
+  { from: "Juno", to: "Kichain" },
+  { from: "Juno", to: "Laozi" },
+  { from: "Juno", to: "Likecoin" },
+  { from: "Juno", to: "Mantle" },
+  { from: "Juno", to: "Omniflixhub" },
+  { from: "Juno", to: "Regen" },
+  { from: "Juno", to: "Secret" },
+  { from: "Juno", to: "Sentinelhub" },
+  { from: "Juno", to: "Sifchain" },
+  { from: "Juno", to: "Stargaze" },
+  { from: "Juno", to: "Titan" },
+  { from: "Juno", to: "Umee" },
+  { from: "Kaiyo", to: "Laozi" },
+  { from: "Kaiyo", to: "Lum-network" },
+  { from: "Kaiyo", to: "Secret" },
+  { from: "Kaiyo", to: "Stargaze" },
+  { from: "Kaiyo", to: "Vidulum" },
+  { from: "Kava", to: "Sifchain" },
+  { from: "Kichain", to: "Omniflixhub" },
+  { from: "Kichain", to: "Sifchain" },
+  { from: "Kichain", to: "Titan" },
+  { from: "Likecoin", to: "Sifchain" },
+  { from: "Lum-network", to: "Sifchain" },
+  { from: "Lum-network", to: "Titan" },
+  { from: "Mantle", to: "Stargaze" },
+  { from: "Microtick", to: "Regen" },
+  { from: "Microtick", to: "Sentinelhub" },
+  { from: "Omniflixhub", to: "Sentinelhub" },
+  { from: "Omniflixhub", to: "Sifchain" },
+  { from: "Omniflixhub", to: "Stargaze" },
+  { from: "Regen", to: "Sentinelhub" },
+  { from: "Regen", to: "Sifchain" },
+  { from: "Secret", to: "Sentinelhub" },
+  { from: "Secret", to: "Sifchain" },
+  { from: "Secret", to: "Stargaze" },
+  { from: "Sentinelhub", to: "Sifchain" },
+  { from: "Sifchain", to: "Stargaze" },
+  { from: "Sifchain", to: "Titan" },
+  { from: "Sifchain", to: "Umee" },
+  { from: "Stargaze", to: "Titan" },
+  { from: "Stargaze", to: "Umee" }
+]);
+  </script>
+</body>
+</html>
